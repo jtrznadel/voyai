@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voyai/core/constants/colors.dart';
+import 'package:voyai/core/routing/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,21 +10,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final router = AppRouter();
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'voyai',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
-        ),
-        body: const Center(
-          child: Text('Hello, World!'),
-        ),
-      ),
+      routerConfig: router.config(),
     );
   }
 }
