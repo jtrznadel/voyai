@@ -42,11 +42,11 @@ class OnboardingPage extends StatelessWidget implements AutoRouteWrapper {
             children: [
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),
-                left: -index * 100,
+                left: -index * 200,
                 child: Image.asset(
                   MediaRes.onBoardingImage,
                   fit: BoxFit.cover,
-                  width: context.width + 200,
+                  width: context.width + 400,
                   height: context.height,
                 ),
               ),
