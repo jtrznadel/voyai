@@ -11,4 +11,8 @@ class AppColors {
   static const textPrimary = Color(0xFF000000);
   static const textContrast = Color(0xFFFFFFFF);
   static const textSecondary = Color(0xFF9E9E9E);
+
+  static const borderColor = Color(0xFFD3D3D3);
+
+  static const iconColor = Color(0xFF000000);
 }

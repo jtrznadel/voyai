@@ -13,7 +13,7 @@ import 'package:voyai/features/onboarding/bloc/onboarding_bloc.dart';
 import 'package:voyai/features/onboarding/data/onboarding_page_model.dart';
 
 @RoutePage()
-class OnboardingPage extends StatelessWidget implements AutoRouteWrapper {
+class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
   @override
@@ -119,7 +119,7 @@ class OnboardingPage extends StatelessWidget implements AutoRouteWrapper {
                         child: AppButton(
                           text: 'Get Started',
                           onPressed: () {
-                            context.router.replace(const SignInRoute());
+                            context.router.push(const SignInRoute());
                           },
                         ),
                       ),
@@ -142,14 +142,6 @@ class OnboardingPage extends StatelessWidget implements AutoRouteWrapper {
           ),
         );
       },
-    );
-  }
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OnboardingBloc()..add(ChangeOnboardingPageEvent(0)),
-      child: this,
     );
   }
 }
