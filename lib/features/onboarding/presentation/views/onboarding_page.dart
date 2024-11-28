@@ -119,7 +119,7 @@ class OnboardingPage extends StatelessWidget {
                         child: AppButton(
                           text: 'Get Started',
                           onPressed: () {
-                            context.router.replace(const SignInRoute());
+                            context.router.push(const SignInRoute());
                           },
                         ),
                       ),

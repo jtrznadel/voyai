@@ -10,6 +10,7 @@ import 'package:voyai/core/constants/paddings.dart';
 import 'package:voyai/core/extensions/context_extension.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
+import 'package:voyai/core/routing/app_router.gr.dart';
 import 'package:voyai/core/widgets/spacers.dart';
 
 @RoutePage()
@@ -79,7 +80,9 @@ class SignInPage extends StatelessWidget {
                     style: context.textTheme.bodyMedium,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.router.replace(const SignUpRoute());
+                      },
                       child: Text(
                         'Sign Up',
                         style: context.textTheme.bodyMedium?.copyWith(

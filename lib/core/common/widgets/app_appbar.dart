@@ -31,11 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         onPressed: () {
-          if (onBack != null) {
-            onBack!();
-          } else {
-            context.router.canPop();
-          }
+          context.router.maybePop();
         },
       ),
     );
