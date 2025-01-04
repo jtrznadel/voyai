@@ -8,4 +8,6 @@ class MediaRes {
 
   static const String googleLogo = 'assets/logos/google.svg';
   static const String appleLogo = 'assets/logos/apple.svg';
+
+  static const String tempAvatarImage = 'assets/images/my_avatar.jpg';
 }
