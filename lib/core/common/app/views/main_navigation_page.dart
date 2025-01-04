@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:voyai/core/constants/colors.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/routing/app_router.gr.dart';
+import 'package:voyai/core/widgets/spacers.dart';
 
 @RoutePage()
 class MainNavigationPage extends StatelessWidget {
@@ -24,114 +25,128 @@ class MainNavigationPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: AppColors.backgroundColor,
           body: child,
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (value) {
-              tabsRouter.setActiveIndex(value);
-            },
-            backgroundColor: AppColors.backgroundColor,
-            currentIndex: tabsRouter.activeIndex,
-            selectedItemColor: AppColors.primaryColor,
-            unselectedItemColor: AppColors.textSecondary,
-            showUnselectedLabels: true,
-            selectedLabelStyle: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
-            unselectedLabelStyle: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppIcons.home,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.textSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.home,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppIcons.explore,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.textSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.explore,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Explore',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppIcons.voy,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.textSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.voy,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Voy',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppIcons.trips,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.textSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.trips,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Trips',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppIcons.profile,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.textSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.profile,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Profile',
-              ),
-            ],
+          bottomNavigationBar: AppNavigationBottomBar(
+            tabsRouter: tabsRouter,
           ),
         );
       },
+    );
+  }
+}
+
+class AppNavigationBottomBar extends StatelessWidget {
+  const AppNavigationBottomBar({super.key, required this.tabsRouter});
+
+  final TabsRouter tabsRouter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: .2),
+                blurRadius: 4,
+                offset: const Offset(0, -2),
+              ),
+            ],
+          ),
+          child: BottomAppBar(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                NavigationBarItem(
+                  iconPath: AppIcons.home,
+                  onPressed: () => tabsRouter.setActiveIndex(0),
+                ),
+                NavigationBarItem(
+                  iconPath: AppIcons.explore,
+                  onPressed: () => tabsRouter.setActiveIndex(1),
+                ),
+                HorizontalSpacer.custom(width: 64),
+                NavigationBarItem(
+                  iconPath: AppIcons.trips,
+                  onPressed: () => tabsRouter.setActiveIndex(3),
+                ),
+                NavigationBarItem(
+                  iconPath: AppIcons.profile,
+                  onPressed: () => tabsRouter.setActiveIndex(4),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 45,
+          child: Material(
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.primaryColor,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => tabsRouter.setActiveIndex(2),
+              child: Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: SvgPicture.asset(
+                    AppIcons.voy,
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    height: 32,
+                    width: 32,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class NavigationBarItem extends StatelessWidget {
+  const NavigationBarItem({
+    super.key,
+    required this.iconPath,
+    required this.onPressed,
+  });
+
+  final String iconPath;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxHeight: 64,
+          maxWidth: 64,
+        ),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: IconButton(
+            onPressed: onPressed,
+            icon: SvgPicture.asset(
+              iconPath,
+              colorFilter:
+                  const ColorFilter.mode(AppColors.iconColor, BlendMode.srcIn),
+              height: 24,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
