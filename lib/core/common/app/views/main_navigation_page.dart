@@ -23,7 +23,7 @@ class MainNavigationPage extends StatelessWidget {
       builder: (context, child) {
         final tabsRouter = context.tabsRouter;
         return Scaffold(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.surfaceColor,
           body: child,
           bottomNavigationBar: AppNavigationBottomBar(
             tabsRouter: tabsRouter,
@@ -47,10 +47,9 @@ class AppNavigationBottomBar extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: .2),
+                color: Colors.black.withValues(alpha: .4),
                 blurRadius: 4,
                 offset: const Offset(0, -2),
               ),
@@ -58,6 +57,7 @@ class AppNavigationBottomBar extends StatelessWidget {
           ),
           child: BottomAppBar(
             padding: const EdgeInsets.symmetric(horizontal: 10),
+            color: AppColors.surfaceColor,
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -101,8 +101,8 @@ class AppNavigationBottomBar extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: SvgPicture.asset(
                     AppIcons.voy,
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(
+                        AppColors.surfaceColor, BlendMode.srcIn),
                     height: 32,
                     width: 32,
                   ),

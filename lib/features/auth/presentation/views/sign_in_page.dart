@@ -59,7 +59,7 @@ class SignInPage extends StatelessWidget {
               AppButton(
                 text: 'Continue with Google',
                 iconSvgPath: MediaRes.googleLogo,
-                bgColor: AppColors.backgroundColor,
+                bgColor: AppColors.surfaceColor,
                 textColor: AppColors.textPrimary,
                 onPressed: () {},
               ),
@@ -67,7 +67,7 @@ class SignInPage extends StatelessWidget {
               AppButton(
                 text: 'Continue with Apple',
                 iconSvgPath: MediaRes.appleLogo,
-                bgColor: AppColors.backgroundColor,
+                bgColor: AppColors.surfaceColor,
                 textColor: AppColors.textPrimary,
                 onPressed: () {},
               ),

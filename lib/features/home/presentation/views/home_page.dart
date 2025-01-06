@@ -17,9 +17,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.surfaceColor,
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.surfaceColor,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Align(
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 backgroundColor: const WidgetStatePropertyAll<Color>(
-                  AppColors.backgroundColor,
+                  AppColors.primaryWidgetColor,
                 ),
                 textStyle: WidgetStatePropertyAll<TextStyle>(
                   context.textTheme.bodyMedium!,
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                 leading: SvgPicture.asset(
                   AppIcons.search,
                   colorFilter: const ColorFilter.mode(
-                    AppColors.textPrimary,
+                    AppColors.iconColor,
                     BlendMode.srcIn,
                   ),
                 ),
