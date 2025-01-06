@@ -5,5 +5,7 @@ class AppPaddings {
   static const double horizontalPadding = 20.0;
   static const double verticalPadding = 10.0;
 
+  static const double listViewPadding = 15.0;
+
   static const double dividerVerticalPadding = 15.0;
 }

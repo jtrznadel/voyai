@@ -8,4 +8,5 @@ class AppIcons {
   static const String trips = 'assets/icons/Car_Auto.svg';
   static const String profile = 'assets/icons/User_Circle.svg';
   static const String search = 'assets/icons/Search_Magnifying_Glass.svg';
+  static const String mountain = 'assets/icons/mountain.svg';
 }

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:voyai/core/common/widgets/app_appbar.dart';
 import 'package:voyai/core/constants/colors.dart';
 import 'package:voyai/core/constants/paddings.dart';
+import 'package:voyai/core/constants/sizes.dart';
 import 'package:voyai/core/extensions/context_extension.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
@@ -67,6 +68,8 @@ class HomePage extends StatelessWidget {
             vertical: AppPaddings.verticalPadding,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: AppSizes.mediumSpacer,
             children: [
               SearchBar(
                 shape: const WidgetStatePropertyAll<OutlinedBorder>(
@@ -96,10 +99,74 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              Text(
+                'Category',
+                style: context.textTheme.bodyMedium,
+              ),
+              IntrinsicHeight(
+                child: OverflowBox(
+                  maxWidth: context.width,
+                  child: SizedBox(
+                    height: 100,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppPaddings.listViewPadding),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const HomeCategoryTile();
+                      },
+                      separatorBuilder: (_, __) => HorizontalSpacer.medium(),
+                      itemCount: 10,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class HomeCategoryTile extends StatelessWidget {
+  const HomeCategoryTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: AppSizes.smallSpacer,
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+              color: AppColors.primaryWidgetColor,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: AppColors.shadowColor,
+                    blurRadius: 4,
+                    offset: Offset(2, 2))
+              ]),
+          child: SizedBox(
+            child: SvgPicture.asset(
+              AppIcons.mountain,
+              width: 24,
+              height: 24,
+              fit: BoxFit.scaleDown,
+              colorFilter:
+                  const ColorFilter.mode(AppColors.iconColor, BlendMode.srcIn),
+            ),
+          ),
+        ),
+        Text(
+          'Mountains',
+          style: context.textTheme.bodySmall,
+        )
+      ],
     );
   }
 }
