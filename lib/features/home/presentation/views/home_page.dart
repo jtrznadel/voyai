@@ -10,6 +10,9 @@ import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
 import 'package:voyai/core/widgets/spacers.dart';
 import 'package:voyai/features/auth/presentation/views/sign_in_page.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:voyai/features/home/presentation/widgets/home_category_tile.dart';
+import 'package:voyai/features/home/presentation/widgets/home_popular_choice_tile.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -54,9 +57,12 @@ class HomePage extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
                     ),
-                  )
+                  ),
                 ],
               ),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(LucideIcons.bellRing))
             ],
           ),
         ),
@@ -72,33 +78,26 @@ class HomePage extends StatelessWidget {
             spacing: AppSizes.mediumSpacer,
             children: [
               SearchBar(
-                shape: const WidgetStatePropertyAll<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
+                  shape: const WidgetStatePropertyAll<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
                     ),
                   ),
-                ),
-                backgroundColor: const WidgetStatePropertyAll<Color>(
-                  AppColors.primaryWidgetColor,
-                ),
-                textStyle: WidgetStatePropertyAll<TextStyle>(
-                  context.textTheme.bodyMedium!,
-                ),
-                hintText: 'Search for a next destination...',
-                hintStyle: WidgetStatePropertyAll<TextStyle>(
-                  context.textTheme.bodySmall!.copyWith(
-                    color: AppColors.textSecondary,
+                  backgroundColor: const WidgetStatePropertyAll<Color>(
+                    AppColors.primaryWidgetColor,
                   ),
-                ),
-                leading: SvgPicture.asset(
-                  AppIcons.search,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.iconColor,
-                    BlendMode.srcIn,
+                  textStyle: WidgetStatePropertyAll<TextStyle>(
+                    context.textTheme.bodyMedium!,
                   ),
-                ),
-              ),
+                  hintText: 'Search for a next destination...',
+                  hintStyle: WidgetStatePropertyAll<TextStyle>(
+                    context.textTheme.bodySmall!.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  leading: const Icon(LucideIcons.search)),
               Text(
                 'Category',
                 style: context.textTheme.bodyMedium,
@@ -120,53 +119,39 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              Row(
+                spacing: 5,
+                children: [
+                  Text(
+                    'Popular Choices',
+                    style: context.textTheme.bodyMedium,
+                  ),
+                  const Text('🔥')
+                ],
+              ),
+              IntrinsicHeight(
+                child: OverflowBox(
+                  maxWidth: context.width,
+                  child: SizedBox(
+                    height: 200,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppPaddings.listViewPadding),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const HomePopularChoiceTile();
+                      },
+                      separatorBuilder: (_, __) => HorizontalSpacer.large(),
+                      itemCount: 10,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class HomeCategoryTile extends StatelessWidget {
-  const HomeCategoryTile({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: AppSizes.smallSpacer,
-      children: [
-        Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-              color: AppColors.primaryWidgetColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                    color: AppColors.shadowColor,
-                    blurRadius: 4,
-                    offset: Offset(2, 2))
-              ]),
-          child: SizedBox(
-            child: SvgPicture.asset(
-              AppIcons.mountain,
-              width: 24,
-              height: 24,
-              fit: BoxFit.scaleDown,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.iconColor, BlendMode.srcIn),
-            ),
-          ),
-        ),
-        Text(
-          'Mountains',
-          style: context.textTheme.bodySmall,
-        )
-      ],
     );
   }
 }

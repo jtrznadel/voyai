@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:voyai/core/constants/colors.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -23,13 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 20,
       ),
       leading: IconButton(
-        icon: SvgPicture.asset(
-          AppIcons.chevronLeft,
-          colorFilter: const ColorFilter.mode(
-            AppColors.iconColor,
-            BlendMode.srcIn,
-          ),
-        ),
+        icon: const Icon(LucideIcons.chevronsLeft),
         onPressed: () {
           context.router.maybePop();
         },

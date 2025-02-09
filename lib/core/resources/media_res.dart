@@ -10,4 +10,7 @@ class MediaRes {
   static const String appleLogo = 'assets/logos/apple.svg';
 
   static const String tempAvatarImage = 'assets/images/my_avatar.jpg';
+
+  static const String tempPopularChoiceImage =
+      'assets/images/popular_choice.jpg';
 }
