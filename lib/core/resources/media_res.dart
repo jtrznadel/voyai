@@ -3,6 +3,8 @@ class MediaRes {
 
   static const voyaiImg = 'assets/images/VOYAI.svg';
   static const voyaiImgBlack = 'assets/images/voyai_black.svg';
+  static const voyaiModelOnboardingImage =
+      'assets/images/voy_onboarding_image.png';
 
   static const String onBoardingImage = 'assets/images/onboarding_image.png';
 
