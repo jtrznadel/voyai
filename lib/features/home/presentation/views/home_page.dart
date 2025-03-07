@@ -4,11 +4,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:voyai/core/common/widgets/app_appbar.dart';
 import 'package:voyai/core/constants/colors.dart';
 import 'package:voyai/core/constants/paddings.dart';
+import 'package:voyai/core/constants/sizes.dart';
 import 'package:voyai/core/extensions/context_extension.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
 import 'package:voyai/core/widgets/spacers.dart';
 import 'package:voyai/features/auth/presentation/views/sign_in_page.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:voyai/features/home/presentation/widgets/home_category_tile.dart';
+import 'package:voyai/features/home/presentation/widgets/home_popular_choice_tile.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -53,9 +57,12 @@ class HomePage extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w600,
                     ),
-                  )
+                  ),
                 ],
               ),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(LucideIcons.bellRing))
             ],
           ),
         ),
@@ -67,32 +74,77 @@ class HomePage extends StatelessWidget {
             vertical: AppPaddings.verticalPadding,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: AppSizes.mediumSpacer,
             children: [
               SearchBar(
-                shape: const WidgetStatePropertyAll<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
+                  shape: const WidgetStatePropertyAll<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                  ),
+                  backgroundColor: const WidgetStatePropertyAll<Color>(
+                    AppColors.primaryWidgetColor,
+                  ),
+                  textStyle: WidgetStatePropertyAll<TextStyle>(
+                    context.textTheme.bodyMedium!,
+                  ),
+                  hintText: 'Search for a next destination...',
+                  hintStyle: WidgetStatePropertyAll<TextStyle>(
+                    context.textTheme.bodySmall!.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  leading: const Icon(LucideIcons.search)),
+              Text(
+                'Category',
+                style: context.textTheme.bodyMedium,
+              ),
+              IntrinsicHeight(
+                child: OverflowBox(
+                  maxWidth: context.width,
+                  child: SizedBox(
+                    height: 100,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppPaddings.listViewPadding),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const HomeCategoryTile();
+                      },
+                      separatorBuilder: (_, __) => HorizontalSpacer.medium(),
+                      itemCount: 10,
                     ),
                   ),
                 ),
-                backgroundColor: const WidgetStatePropertyAll<Color>(
-                  AppColors.primaryWidgetColor,
-                ),
-                textStyle: WidgetStatePropertyAll<TextStyle>(
-                  context.textTheme.bodyMedium!,
-                ),
-                hintText: 'Search for a next destination...',
-                hintStyle: WidgetStatePropertyAll<TextStyle>(
-                  context.textTheme.bodySmall!.copyWith(
-                    color: AppColors.textSecondary,
+              ),
+              Row(
+                spacing: 5,
+                children: [
+                  Text(
+                    'Popular Choices',
+                    style: context.textTheme.bodyMedium,
                   ),
-                ),
-                leading: SvgPicture.asset(
-                  AppIcons.search,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.iconColor,
-                    BlendMode.srcIn,
+                  const Text('🔥')
+                ],
+              ),
+              IntrinsicHeight(
+                child: OverflowBox(
+                  maxWidth: context.width,
+                  child: SizedBox(
+                    height: 200,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppPaddings.listViewPadding),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const HomePopularChoiceTile();
+                      },
+                      separatorBuilder: (_, __) => HorizontalSpacer.large(),
+                      itemCount: 10,
+                    ),
                   ),
                 ),
               ),

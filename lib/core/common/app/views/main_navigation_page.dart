@@ -5,6 +5,7 @@ import 'package:voyai/core/constants/colors.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/routing/app_router.gr.dart';
 import 'package:voyai/core/widgets/spacers.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 @RoutePage()
 class MainNavigationPage extends StatelessWidget {
@@ -63,20 +64,20 @@ class AppNavigationBottomBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 NavigationBarItem(
-                  iconPath: AppIcons.home,
+                  iconData: LucideIcons.house,
                   onPressed: () => tabsRouter.setActiveIndex(0),
                 ),
                 NavigationBarItem(
-                  iconPath: AppIcons.explore,
+                  iconData: LucideIcons.compass,
                   onPressed: () => tabsRouter.setActiveIndex(1),
                 ),
                 HorizontalSpacer.custom(width: 64),
                 NavigationBarItem(
-                  iconPath: AppIcons.trips,
+                  iconData: LucideIcons.route,
                   onPressed: () => tabsRouter.setActiveIndex(3),
                 ),
                 NavigationBarItem(
-                  iconPath: AppIcons.profile,
+                  iconData: LucideIcons.circleUser,
                   onPressed: () => tabsRouter.setActiveIndex(4),
                 ),
               ],
@@ -97,16 +98,13 @@ class AppNavigationBottomBar extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: SvgPicture.asset(
-                    AppIcons.voy,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.surfaceColor, BlendMode.srcIn),
-                    height: 32,
-                    width: 32,
-                  ),
-                ),
+                child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Icon(
+                      LucideIcons.brain,
+                      size: 36,
+                      color: AppColors.primaryWidgetColor,
+                    )),
               ),
             ),
           ),
@@ -119,11 +117,11 @@ class AppNavigationBottomBar extends StatelessWidget {
 class NavigationBarItem extends StatelessWidget {
   const NavigationBarItem({
     super.key,
-    required this.iconPath,
+    required this.iconData,
     required this.onPressed,
   });
 
-  final String iconPath;
+  final IconData iconData;
   final VoidCallback onPressed;
 
   @override
@@ -138,11 +136,8 @@ class NavigationBarItem extends StatelessWidget {
           aspectRatio: 1,
           child: IconButton(
             onPressed: onPressed,
-            icon: SvgPicture.asset(
-              iconPath,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.iconColor, BlendMode.srcIn),
-              height: 24,
+            icon: Icon(
+              iconData,
             ),
           ),
         ),

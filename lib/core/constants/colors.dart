@@ -20,4 +20,6 @@ class AppColors {
   static const borderColor = Color(0xFFD3D3D3);
 
   static const iconColor = Color(0xFFFFFFFF);
+
+  static const shadowColor = Color.fromARGB(64, 0, 0, 0);
 }
