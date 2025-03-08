@@ -9,11 +9,13 @@ class AppTextField extends StatelessWidget {
     required this.label,
     required this.hint,
     this.required = true,
+    required this.onChanged,
   });
 
   final String label;
   final String hint;
   final bool required;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class AppTextField extends StatelessWidget {
         ),
         VerticalSpacer.small(),
         TextField(
+          onChanged: onChanged,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),

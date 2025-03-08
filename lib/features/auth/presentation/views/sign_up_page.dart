@@ -33,15 +33,17 @@ class SignUpPage extends StatelessWidget {
               VerticalSpacer.large(),
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: AppTextField(
+                      onChanged: (p0) {},
                       label: 'First Name',
                       hint: 'John',
                     ),
                   ),
                   HorizontalSpacer.medium(),
-                  const Expanded(
+                  Expanded(
                     child: AppTextField(
+                      onChanged: (p0) {},
                       label: 'Last Name',
                       hint: 'Doe',
                     ),
@@ -49,19 +51,26 @@ class SignUpPage extends StatelessWidget {
                 ],
               ),
               VerticalSpacer.medium(),
-              const AppTextField(
+              AppTextField(
                 label: 'E-mail Address',
                 hint: 'johndoe@example.com',
+                onChanged: (p0) {},
               ),
               VerticalSpacer.medium(),
-              const AppTextField(label: 'Phone number', hint: '+1 234 567 890'),
+              AppTextField(
+                label: 'Phone number',
+                hint: '+1 234 567 890',
+                onChanged: (p0) {},
+              ),
               VerticalSpacer.medium(),
-              const AppTextField(
+              AppTextField(
+                onChanged: (p0) {},
                 label: 'Password',
                 hint: '********',
               ),
               VerticalSpacer.medium(),
-              const AppTextField(
+              AppTextField(
+                onChanged: (p0) {},
                 label: 'Confirm Password',
                 hint: '********',
               ),

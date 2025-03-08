@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -28,10 +29,7 @@ import 'package:voyai/features/voy/presentation/views/voy_page.dart' as _i9;
 /// [_i1.ExplorePage]
 class ExploreRoute extends _i10.PageRouteInfo<void> {
   const ExploreRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          ExploreRoute.name,
-          initialChildren: children,
-        );
+    : super(ExploreRoute.name, initialChildren: children);
 
   static const String name = 'ExploreRoute';
 
@@ -47,10 +45,7 @@ class ExploreRoute extends _i10.PageRouteInfo<void> {
 /// [_i2.HomePage]
 class HomeRoute extends _i10.PageRouteInfo<void> {
   const HomeRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
+    : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
@@ -66,10 +61,7 @@ class HomeRoute extends _i10.PageRouteInfo<void> {
 /// [_i3.MainNavigationPage]
 class MainNavigationRoute extends _i10.PageRouteInfo<void> {
   const MainNavigationRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          MainNavigationRoute.name,
-          initialChildren: children,
-        );
+    : super(MainNavigationRoute.name, initialChildren: children);
 
   static const String name = 'MainNavigationRoute';
 
@@ -85,10 +77,7 @@ class MainNavigationRoute extends _i10.PageRouteInfo<void> {
 /// [_i4.OnboardingPage]
 class OnboardingRoute extends _i10.PageRouteInfo<void> {
   const OnboardingRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          OnboardingRoute.name,
-          initialChildren: children,
-        );
+    : super(OnboardingRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingRoute';
 
@@ -104,10 +93,7 @@ class OnboardingRoute extends _i10.PageRouteInfo<void> {
 /// [_i5.ProfilePage]
 class ProfileRoute extends _i10.PageRouteInfo<void> {
   const ProfileRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          ProfileRoute.name,
-          initialChildren: children,
-        );
+    : super(ProfileRoute.name, initialChildren: children);
 
   static const String name = 'ProfileRoute';
 
@@ -123,10 +109,7 @@ class ProfileRoute extends _i10.PageRouteInfo<void> {
 /// [_i6.SignInPage]
 class SignInRoute extends _i10.PageRouteInfo<void> {
   const SignInRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          SignInRoute.name,
-          initialChildren: children,
-        );
+    : super(SignInRoute.name, initialChildren: children);
 
   static const String name = 'SignInRoute';
 
@@ -142,10 +125,7 @@ class SignInRoute extends _i10.PageRouteInfo<void> {
 /// [_i7.SignUpPage]
 class SignUpRoute extends _i10.PageRouteInfo<void> {
   const SignUpRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          SignUpRoute.name,
-          initialChildren: children,
-        );
+    : super(SignUpRoute.name, initialChildren: children);
 
   static const String name = 'SignUpRoute';
 
@@ -161,10 +141,7 @@ class SignUpRoute extends _i10.PageRouteInfo<void> {
 /// [_i8.TripsPage]
 class TripsRoute extends _i10.PageRouteInfo<void> {
   const TripsRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          TripsRoute.name,
-          initialChildren: children,
-        );
+    : super(TripsRoute.name, initialChildren: children);
 
   static const String name = 'TripsRoute';
 
@@ -180,10 +157,7 @@ class TripsRoute extends _i10.PageRouteInfo<void> {
 /// [_i9.VoyPage]
 class VoyRoute extends _i10.PageRouteInfo<void> {
   const VoyRoute({List<_i10.PageRouteInfo>? children})
-      : super(
-          VoyRoute.name,
-          initialChildren: children,
-        );
+    : super(VoyRoute.name, initialChildren: children);
 
   static const String name = 'VoyRoute';
 

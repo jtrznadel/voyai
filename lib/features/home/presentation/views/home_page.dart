@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:voyai/core/common/widgets/app_appbar.dart';
 import 'package:voyai/core/constants/colors.dart';
@@ -9,6 +10,8 @@ import 'package:voyai/core/extensions/context_extension.dart';
 import 'package:voyai/core/resources/app_icons.dart';
 import 'package:voyai/core/resources/media_res.dart';
 import 'package:voyai/core/widgets/spacers.dart';
+import 'package:voyai/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:voyai/features/auth/presentation/bloc/sign_in/bloc/sign_in_bloc.dart';
 import 'package:voyai/features/auth/presentation/views/sign_in_page.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:voyai/features/home/presentation/widgets/home_category_tile.dart';
@@ -30,14 +33,19 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Row(
             children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.horizontal(
-                  left: Radius.circular(15),
-                  right: Radius.circular(15),
-                ),
-                child: Image.asset(
-                  MediaRes.tempAvatarImage,
-                  width: 45,
+              GestureDetector(
+                onDoubleTap: () {
+                  context.read<AuthBloc>().add(AuthLogout());
+                },
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.horizontal(
+                    left: Radius.circular(15),
+                    right: Radius.circular(15),
+                  ),
+                  child: Image.asset(
+                    MediaRes.tempAvatarImage,
+                    width: 45,
+                  ),
                 ),
               ),
               HorizontalSpacer.medium(),
