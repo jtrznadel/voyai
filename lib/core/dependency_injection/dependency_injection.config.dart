@@ -18,6 +18,8 @@ import 'package:voyai/features/auth/data/auth_repository.dart' as _i59;
 import 'package:voyai/features/auth/presentation/bloc/auth_bloc.dart' as _i552;
 import 'package:voyai/features/auth/presentation/bloc/sign_in/bloc/sign_in_bloc.dart'
     as _i289;
+import 'package:voyai/features/auth/presentation/bloc/sign_up/bloc/sign_up_bloc.dart'
+    as _i39;
 import 'package:voyai/features/auth/repository/auth_repository.dart' as _i650;
 import 'package:voyai/features/onboarding/bloc/onboarding_bloc.dart' as _i871;
 
@@ -40,6 +42,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i59.AuthRepository(gh<_i454.GoTrueClient>()));
     gh.factory<_i289.SignInBloc>(
         () => _i289.SignInBloc(gh<_i650.IAuthRepository>()));
+    gh.factory<_i39.SignUpBloc>(
+        () => _i39.SignUpBloc(gh<_i650.IAuthRepository>()));
     gh.singleton<_i552.AuthBloc>(
         () => _i552.AuthBloc(gh<_i650.IAuthRepository>()));
     return this;

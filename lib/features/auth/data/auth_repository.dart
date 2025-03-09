@@ -23,6 +23,9 @@ class AuthRepository implements IAuthRepository {
     await _supabaseAuth.signUp(
       password: password,
       email: email,
+      data: {
+        'full_name': 'Anonymous',
+      },
     );
   }
 
