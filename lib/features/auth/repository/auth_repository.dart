@@ -9,6 +9,8 @@ abstract class IAuthRepository {
   Future<void> signUpWithEmailAndPassword({
     required String email,
     required String password,
+    required String username,
+    required String phoneNumber,
   });
 
   Future<void> signOut();

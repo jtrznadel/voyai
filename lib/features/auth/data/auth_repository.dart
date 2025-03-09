@@ -1,4 +1,3 @@
-import 'package:gotrue/src/types/user.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:voyai/features/auth/repository/auth_repository.dart';
@@ -18,15 +17,20 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<void> signUpWithEmailAndPassword(
-      {required String email, required String password}) async {
-    await _supabaseAuth.signUp(
+  Future<void> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+    required String phoneNumber,
+  }) async {
+    final response = await _supabaseAuth.signUp(
       password: password,
       email: email,
       data: {
-        'full_name': 'Anonymous',
+        'username': username,
       },
     );
+    print(response);
   }
 
   @override

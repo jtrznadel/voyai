@@ -74,6 +74,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       await _authRepository.signUpWithEmailAndPassword(
         email: state.email,
         password: state.password,
+        username: state.username,
+        phoneNumber: state.phoneNumber,
       );
       emit(state.copyWith(status: Status.success));
     } on AuthException catch (e) {
