@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:voyai/core/constants/enums.dart';
 import 'package:voyai/features/auth/repository/auth_repository.dart';
 
@@ -44,8 +47,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         password: state.password,
       );
       emit(state.copyWith(status: Status.success));
+    } on AuthException catch (e) {
+      emit(state.copyWith(
+        status: Status.error,
+        errorMessage: e.message,
+      ));
     } catch (e) {
-      emit(state.copyWith(status: Status.error));
+      emit(state.copyWith(
+        status: Status.error,
+        errorMessage: 'An unexpected error occurred. Please try again.',
+      ));
     }
   }
 

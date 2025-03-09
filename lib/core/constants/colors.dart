@@ -11,6 +11,7 @@ class AppColors {
   // static const surfaceColor = Color(0xFFF1F0FE);
   static const primaryWidgetColor = Color(0xFF363636);
   static const surfaceColor = Color(0xFF272727);
+  static const errorColor = Color(0xFFD32F2F);
   //static const backgroundColor = Color(0xFFFFFFFF);
 
   static const textPrimary = Color(0xFFFFFFFF);

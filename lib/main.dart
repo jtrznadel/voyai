@@ -6,8 +6,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:voyai/core/dependency_injection/dependency_injection.dart';
 import 'package:voyai/core/routing/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:voyai/core/routing/app_router.gr.dart';
 import 'package:voyai/core/theme/app_theme.dart';
-import 'package:voyai/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:voyai/features/auth/presentation/bloc/auth_bloc.dart' as auth;
 import 'package:voyai/features/onboarding/bloc/onboarding_bloc.dart';
 
 void main() async {
@@ -24,7 +25,14 @@ void main() async {
   configureDependencies();
 
   runApp(
-    const MyApp(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: getIt.get<OnboardingBloc>()),
+        BlocProvider.value(
+            value: getIt.get<auth.AuthBloc>()..add(auth.AuthInitialCheck())),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -35,12 +43,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = getIt<AppRouter>();
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: getIt.get<OnboardingBloc>()),
-        BlocProvider.value(
-            value: getIt.get<AuthBloc>()..add(AuthInitialCheck())),
-      ],
+    return BlocListener<auth.AuthBloc, auth.AuthState>(
+      listener: (context, state) {
+        router.replace(const HomeRoute());
+      },
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'voyai',

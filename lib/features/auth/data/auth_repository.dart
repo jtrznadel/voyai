@@ -11,11 +11,10 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    final result = await _supabaseAuth.signInWithPassword(
+    await _supabaseAuth.signInWithPassword(
       password: password,
       email: email,
     );
-    print(result);
   }
 
   @override
